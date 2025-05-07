@@ -73,7 +73,7 @@ async def mention_all(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def main():
     load_members()
 
-    app = ApplicationBuilder().token("тут токен бота").build()
+    app = os.getenv("BOT_TOKEN")
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & filters.ChatType.GROUPS, track_users))
@@ -85,7 +85,7 @@ if __name__ == '__main__':
     import asyncio
     from telegram.ext import ApplicationBuilder
 
-    app = ApplicationBuilder().token("тут токен бота").build()
+    app = os.getenv("BOT_TOKEN")
 
     load_members()
     app.add_handler(CommandHandler("all",mention_all))
